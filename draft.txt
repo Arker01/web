@@ -1,0 +1,19 @@
+# 连接数据库
+    import pymysql
+    connection = pymysql.connect(
+        host='120.46.80.149',
+        port=3306,
+        user='21231127',  # 自己的mysql用户名
+        password='Aa767009',  # 自己的密码
+        database='db21231127',  # 数据库的名字
+    )
+    cursor = connection.cursor()
+
+    sql = 'show tables'
+
+    cursor.execute(sql)  # 执行sql 语句
+    datas = cursor.fetchall()  # 使用fetall()获取全部结果数据
+    print(datas)
+    connection.commit()  # 提交操作   除了查询 切记提交操作后才会生效
+    cursor.close()  # 关闭光标
+    connection.connect()  # 关闭连接
